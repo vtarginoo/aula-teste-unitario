@@ -1,43 +1,58 @@
 package com.example.testes_unitarios_aula;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class CalculadoraTest {
+    private Calculadora calculadora;
 
-
-    @Test
-    void deveSomar () {
-        Calculadora calculadora = new Calculadora();
-
-        int resultado = calculadora.somar(4,2);
-        assertEquals(6,resultado);
+    @BeforeEach
+    void setup() {
+        calculadora = new Calculadora();
     }
 
 
     @Test
-    void deveSubtrair () {
-        Calculadora calculadora = new Calculadora();
+    void deveSomar() {
 
-        int resultado = calculadora.subtrair(4,2);
-        assertEquals(2,resultado);
+        int resultado = calculadora.somar(4, 2);
+        assertEquals(6, resultado);
+    }
+
+
+    @Test
+    void deveSubtrair() {
+
+        int resultado = calculadora.subtrair(4, 2);
+        assertEquals(2, resultado);
 
     }
 
     @Test
-    void deveMultiplicar () {
-        fail("Teste não implementado");
+    void deveMultiplicar() {
+
+        int resultado = calculadora.multiplicar(4, 2);
+        assertEquals(8, resultado);
 
     }
 
     @Test
-    void deveDividir () {
-        fail("Teste não implementado");
+    void deveDividir() {
+
+        int resultado = calculadora.dividir(4, 2);
+        assertEquals(2, resultado);
     }
 
+    @Test
+    void deveDividir_GerarExecaoQuandoDividirPorZero() {
+
+        assertThrows(ArithmeticException.class, () -> calculadora.dividir(4, 0));
+
+    }
 
 
 }
