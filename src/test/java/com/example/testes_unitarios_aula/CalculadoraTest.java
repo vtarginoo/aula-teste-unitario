@@ -1,5 +1,6 @@
 package com.example.testes_unitarios_aula;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ class CalculadoraTest {
     void deveSomar() {
 
         int resultado = calculadora.somar(4, 2);
-        assertEquals(6, resultado);
+        Assertions.assertThat(resultado).isEqualTo(6);
     }
 
 
@@ -28,7 +29,7 @@ class CalculadoraTest {
     void deveSubtrair() {
 
         int resultado = calculadora.subtrair(4, 2);
-        assertEquals(2, resultado);
+        Assertions.assertThat(resultado).isEqualTo(2);
 
     }
 
@@ -36,7 +37,7 @@ class CalculadoraTest {
     void deveMultiplicar() {
 
         int resultado = calculadora.multiplicar(4, 2);
-        assertEquals(8, resultado);
+        Assertions.assertThat(resultado).isEqualTo(8);
 
     }
 
